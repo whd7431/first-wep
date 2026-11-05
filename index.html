@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이원세무회계사무소 | 세금 상담</title>
+<meta name="description" content="이원세무회계사무소 - 상속세·증여세·양도소득세 전문, 기장·법인세·소득세·절세 컨설팅 세무사 상담">
+<meta name="theme-color" content="#6b4a36">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="이원세무">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --bg:#f7f3ee; --ink:#1d1612; --brown:#6b4a36; --accent:#c08a5b; --soft:#efe5da; --muted:#8a7a6d; --white:#fff;
+    --r:28px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Pretendard Variable",Pretendard,"Malgun Gothic",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;letter-spacing:-.02em;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0;scroll-margin-top:90px}
+
+  /* header */
+  header{position:fixed;top:14px;left:0;right:0;z-index:50;padding:0 16px}
+  .bar{max-width:1120px;margin:0 auto;height:60px;padding:0 12px 0 24px;display:flex;align-items:center;justify-content:space-between;
+    background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7);border-radius:999px;box-shadow:0 8px 30px rgba(60,35,15,.08);position:relative}
+  .logo{display:flex;align-items:center;gap:6px;font-weight:800;font-size:18px;letter-spacing:-.03em;white-space:nowrap}
+  .logo img{width:26px;height:26px;display:block}
+  nav{display:flex;align-items:center;gap:4px}
+  nav a{padding:8px 14px;border-radius:999px;font-size:15px;font-weight:500;color:var(--muted);transition:.2s}
+  nav a:hover{background:var(--soft);color:var(--ink)}
+  nav a.cta{background:var(--ink);color:#fff;margin-left:6px}
+  nav a.cta:hover{background:var(--brown)}
+  .menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:12px;background:none;border:0;cursor:pointer;border-radius:50%}
+  .menu-btn span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .2s}
+  .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;padding:170px 0 110px}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:0}
+  .blob.a{width:420px;height:420px;background:#e8c9a8;top:-80px;right:-60px}
+  .blob.b{width:320px;height:320px;background:#f3dcc6;bottom:-80px;left:-80px}
+  .hero .wrap{position:relative;z-index:1}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:var(--brown);box-shadow:0 2px 12px rgba(60,35,15,.06)}
+  .chip i{width:8px;height:8px;border-radius:50%;background:#4fbf7f;display:inline-block}
+  .hero h1{font-size:clamp(40px,7vw,76px);line-height:1.12;font-weight:800;letter-spacing:-.045em;margin:24px 0 22px}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero p{font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:520px}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 28px;border-radius:999px;font-weight:700;font-size:16px;transition:.25s}
+  .btn.dark{background:var(--ink);color:#fff}
+  .btn.dark:hover{background:var(--brown);transform:translateY(-2px)}
+  .btn.light{background:#fff;color:var(--ink);box-shadow:0 2px 12px rgba(60,35,15,.08)}
+  .btn.light:hover{transform:translateY(-2px)}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:40px}
+  .badges span{font-size:14px;font-weight:600;color:var(--brown);background:rgba(255,255,255,.65);border:1px solid #fff;border-radius:999px;padding:7px 14px}
+
+  /* titles */
+  .eyebrow{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+  h2{font-size:clamp(30px,4.5vw,48px);line-height:1.2;font-weight:800;letter-spacing:-.04em;margin:10px 0 14px}
+  .sub{color:var(--muted);font-size:18px;margin-bottom:44px}
+
+  /* about */
+  .about{display:grid;grid-template-columns:320px 1fr;gap:20px}
+  .tile{background:#fff;border-radius:var(--r);padding:36px}
+  .portrait{display:flex;align-items:center;justify-content:center;background:var(--soft)}
+  .portrait svg{width:100%;max-width:240px;height:auto;border-radius:50%}
+  .about h3{font-size:26px;letter-spacing:-.03em;margin-bottom:12px}
+  .about p{color:#5d4e44;font-size:17px}
+  .mark-row{display:flex;align-items:center;gap:8px;margin-top:20px}
+  .mark-row img{width:40px;height:40px;display:block}
+  .name-tag{display:inline-block;font-weight:700;color:var(--brown);background:var(--soft);padding:8px 16px;border-radius:999px;font-size:15px}
+
+  /* services bento */
+  .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .svc{background:#fff;border-radius:var(--r);padding:30px;transition:.3s;position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+  .svc:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(60,35,15,.1)}
+  .svc .no{font-size:14px;font-weight:700;color:var(--accent)}
+  .svc h3{font-size:22px;letter-spacing:-.03em;margin:28px 0 8px}
+  .svc p{color:var(--muted);font-size:15px}
+  .svc.big{grid-column:span 2;background:var(--ink);color:#fff}
+  .svc.big p{color:#cdbfb3}
+  .svc.big .no{color:#e0b88f}
+  .svc.tint{background:var(--soft)}
+
+  /* specialty */
+  .spec-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+  .spec{background:#fff;border-radius:var(--r);padding:34px 30px;display:flex;flex-direction:column;transition:.3s}
+  .spec:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(60,35,15,.1)}
+  .spec.dark{background:var(--ink);color:#fff}
+  .spec.tint{background:var(--soft)}
+  .spec-head{display:flex;align-items:baseline;gap:12px}
+  .spec .no{font-size:14px;font-weight:700;color:var(--accent)}
+  .spec.dark .no{color:#e0b88f}
+  .spec h3{font-size:28px;font-weight:800;letter-spacing:-.04em}
+  .spec .lead{margin:14px 0 20px;color:var(--muted);font-size:16px;font-weight:500}
+  .spec.dark .lead{color:#cdbfb3}
+  .spec ul{list-style:none;display:grid;gap:10px;margin-bottom:24px;flex:1}
+  .spec li{position:relative;padding-left:22px;font-size:15px}
+  .spec li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+  .due{font-size:14px;background:rgba(192,138,91,.14);border-radius:16px;padding:14px 16px;color:#5d4e44}
+  .due b{display:block;color:var(--accent);margin-bottom:2px;font-size:13px}
+  .spec.dark .due{background:rgba(255,255,255,.08);color:#e8ddd2}
+  .spec.dark .due b{color:#e0b88f}
+  .worry{margin-top:20px;background:#fff;border-radius:var(--r);padding:34px 30px}
+  .worry h3{font-size:22px;letter-spacing:-.03em;margin-bottom:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chips span{background:var(--soft);border-radius:999px;padding:10px 18px;font-size:15px;font-weight:500}
+  .general{margin-top:72px}
+  .general h3{font-size:clamp(24px,3.5vw,34px);font-weight:800;letter-spacing:-.04em;margin:8px 0 10px}
+  .gen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gen{background:#fff;border-radius:22px;padding:24px;transition:.25s}
+  .gen:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(60,35,15,.08)}
+  .gen h4{font-size:19px;letter-spacing:-.03em;margin-bottom:6px}
+  .gen p{color:var(--muted);font-size:15px}
+  .gen small{display:inline-block;margin-top:14px;background:var(--soft);color:var(--brown);font-weight:600;font-size:13px;padding:5px 12px;border-radius:999px}
+  .notice{margin-top:8px;color:var(--muted);font-size:13px}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .step{padding:8px 0}
+  .step .n{font-size:64px;font-weight:800;letter-spacing:-.05em;line-height:1;color:#e3d3c1}
+  .step h3{font-size:20px;margin:12px 0 6px;letter-spacing:-.03em}
+  .step p{color:var(--muted);font-size:15px}
+  .step{border-top:2px solid var(--ink);padding-top:20px}
+
+  /* faq */
+  .faq{max-width:760px}
+  details{background:#fff;border-radius:20px;padding:22px 26px;margin-bottom:12px;transition:.2s}
+  summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:26px;font-weight:400;color:var(--accent);transition:transform .25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin-top:12px;color:var(--muted);font-size:16px}
+
+  /* map */
+  .map{border-radius:var(--r);overflow:hidden;background:var(--soft);box-shadow:0 10px 40px rgba(60,35,15,.1)}
+  .map iframe{display:block;width:100%;height:420px;border:0}
+  .map-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .map-links a{background:#fff;padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px;transition:.2s}
+  .map-links a:hover{background:var(--ink);color:#fff}
+
+  /* contact */
+  .contact{background:var(--ink);color:#fff;border-radius:40px;padding:72px 56px;position:relative;overflow:hidden}
+  .contact::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:var(--accent);filter:blur(110px);opacity:.28;right:-80px;top:-100px}
+  .contact>*{position:relative;z-index:1}
+  .contact .eyebrow{color:#e0b88f}
+  .contact h2{color:#fff}
+  .tel{display:block;font-size:clamp(34px,6vw,64px);font-weight:800;letter-spacing:-.04em;margin:18px 0 28px}
+  .tel:hover{color:#e0b88f}
+  .infos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .info{background:rgba(255,255,255,.08);border-radius:20px;padding:20px 22px}
+  .info small{display:block;color:#bba999;font-size:13px;margin-bottom:4px}
+  .info b{font-weight:600;font-size:16px;word-break:keep-all}
+
+  footer{text-align:center;padding:40px 24px 50px;color:var(--muted);font-size:13px}
+
+  /* PWA install sheet (mobile only) */
+  .install{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:100;max-width:460px;margin:0 auto;
+    background:#fff;border-radius:28px;padding:22px;box-shadow:0 20px 60px rgba(40,25,10,.28);
+    transform:translateY(140%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s;display:none}
+  .install.show{transform:none;opacity:1}
+  .install .row{display:flex;gap:14px;align-items:center}
+  .install img{width:56px;height:56px;border-radius:14px;flex-shrink:0}
+  .install h4{font-size:18px;letter-spacing:-.03em;line-height:1.3}
+  .install p{font-size:14px;color:var(--muted);margin-top:2px}
+  .install .ios-guide{display:none;margin-top:14px;background:var(--soft);border-radius:16px;padding:12px 14px;font-size:14px;color:#5d4e44}
+  .install.ios .ios-guide{display:block}
+  .install .btns{display:flex;gap:10px;margin-top:16px}
+  .install button{flex:1;border:0;border-radius:999px;padding:14px;font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+  .install .no{background:var(--soft);color:var(--brown)}
+  .install .yes{background:var(--ink);color:#fff;flex:1.4}
+  @media (max-width:820px){.install{display:block}}
+  @media (min-width:821px){.install{display:none!important}}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  @media(max-width:860px){
+    .about{grid-template-columns:1fr}
+    .spec-list{grid-template-columns:1fr}
+    .gen-grid{grid-template-columns:1fr 1fr}
+    .bento{grid-template-columns:1fr 1fr}
+    .svc.big{grid-column:span 2}
+    .steps{grid-template-columns:1fr 1fr;gap:28px 16px}
+  }
+  @media(max-width:640px){
+    section{padding:64px 0}
+    .hero{padding:130px 0 70px}    .bar{padding:0 8px 0 20px}
+    .menu-btn{display:flex}
+    nav{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-radius:28px;padding:12px;box-shadow:0 20px 40px rgba(60,35,15,.15)}
+    nav.open{display:flex}
+    nav a{padding:14px 18px;font-size:16px;color:var(--ink)}
+    nav a.cta{margin:6px 0 0;text-align:center}
+    .bento{grid-template-columns:1fr}
+    .svc.big{grid-column:auto}
+    .svc{min-height:auto}
+    .steps{grid-template-columns:1fr}
+    .gen-grid{grid-template-columns:1fr}
+    .general{margin-top:52px}
+    .tile{padding:26px}
+    .map iframe{height:300px}
+    .contact{padding:44px 26px;border-radius:30px}
+    .btn{flex:1;justify-content:center;white-space:nowrap;padding:16px 18px;font-size:15px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="logo" href="#top"><img src="data:image/png;base64,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" alt="한국세무사회 마크" width="26" height="26">이원세무회계사무소</a>
+    <button class="menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav id="nav">
+      <a href="#about">소개</a><a href="#services">업무분야</a><a href="#process">진행절차</a><a href="#faq">FAQ</a><a href="#location">오시는길</a><a class="cta" href="#contact">상담 문의</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="wrap">
+    <h1>세금 고민,<br><em>처음부터 끝까지</em><br>함께합니다.</h1>
+    <p>상속·증여·양도부터 기장, 법인세, 소득세, 절세 컨설팅까지.<br>신고 전에 설계하고, 신고 후까지 책임지겠습니다.</p>
+    <div class="actions">
+      <a class="btn dark" href="#contact">상담 문의하기 →</a>
+      <a class="btn light" href="tel:0313883505">031-388-3505</a>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">About</div>
+      <h2>고객의 입장에서 생각하는<br>세무 파트너</h2>
+      <p class="sub">세금은 미리 알고 준비하면 충분히 줄일 수 있습니다.</p>
+    </div>
+    <div class="about rv">
+      <div class="tile portrait">
+        <svg viewBox="0 0 180 180" role="img" aria-label="이무종 세무사 프로필 일러스트">
+          <rect width="180" height="180" fill="#e3d0bb"/>
+          <circle cx="90" cy="70" r="30" fill="#8a6a52"/>
+          <path d="M30 180c0-38 27-62 60-62s60 24 60 62z" fill="#3a2a20"/>
+          <path d="M78 122l12 18 12-18z" fill="#faf5ef"/>
+        </svg>
+      </div>
+      <div class="tile">
+        <h3>안녕하세요, 세무사 이무종입니다.</h3>
+        <p>세금은 어렵고 부담스럽게 느껴지기 쉽지만, 미리 알고 준비하면 충분히 줄이고 피할 수 있습니다. 특히 상속·증여·양도처럼 금액이 큰 재산 세금을 전문으로 하고, 기장 상담과 법인세·소득세 신고, 전반적인 절세 컨설팅까지 상황에 맞는 방안을 제시하며 신고부터 사후 관리까지 꼼꼼하게 도와드립니다.</p>
+        <div class="mark-row"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOkAAADpCAYAAADBNxDjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABU5SURBVHhe7V3dkeS4Db5ne6/OIdzbTY8f7BD8bPXUOYQNYUKYDDaEDWFCmBAmBIewIdgFSupVoykJJEECIPFVfS+7GjUlEcTfR+mXXxyq8Zfnf//zr3+f/gX89TK93fF5ev/1cv0445fn67f7v3v5up7zt3/8+Tf8mw6HAyEY4PPL1zvDe77+ryW/PE//DQZ9mb7DOL5crv+BBQKP1eHoGuC1YPKvxhgMI2Iw6ni5fgbjfZpeYUHB1+VwmMVvf/z5O3hImOBmDJJKMNzn6zdYdDxkdpjB6im7NMozLkbrntahDsFbPk2vEnmkVn65TD9CePz88tW9rEMEG8P8xBPUGeP0DgaL76PDwQrwCHMF1j1mLlcP6yGxgxXQhgg55mX6gSedM58hZ3+aXj0cdmRj8Zoezjage1cHGSGkDY1895oiDKmE566OCKAQNPf83Dg1cG5fubE6VuMMrYLHieKUpxvrwAiiAxCdRyaGUx/dWAeC55y2CcYKii78XB2dIGhoO5Tq3XavrNvRNtvQKLtYYOFajwfeNgBsduSou2+X6wfl2hxGAA+zBwHCaoyS28jWva1LNPJdukUFC5P3WQ3DfN653WXyx5+/4+vThGC4IJMU2H43py6er5rDshPFVN4551ugbLK/9etui16r53C5fmhfzBw3fS2IuSMPUSMhXLxMbxKha0sEaWXImeuGx2FBeJpe8e87lMCK9wwe8/n6rXfD3MO6g6hqWOxeVRfmjdb6BQlrKIvHPzJWD1tjcfVcVQnmh1xxRS5kmCiX6c1X9XPU2wY4vVvP8c1iribiB6KDrpDJx7o1EN/TEsLzGDW9EIHm4pAbJx/qbHrwZ1MdizChaoUwh26c9cAt5QQv7eFvJWis3q45Jx6rgx+sO5Yu1083VGZozD99RZZBaOEwFJhggfU8lQlsqycTIbT1V33II0RWhZV9b9MUQmWByENbVeDTZ7uhJmMuFugpEHkJXzc4Copg7Pi8jh2oM1DPPU2Aw6vCs8bndSBwrIhc9HzFJuaN6/ldADfUAyxKk+yby8rL9dPDW7tYorHsCrAbagSqDNS1nt2gJPx1Q91Ak4F68aA/LJvPs+aXG6q6IpHnn71ifqkaft40Dm2oWgzUC0R9I7x/KfLcUzikoWoyUC8Q9QvWVGo0IYsGJZEbaN+Y+6ZlssFHDhJxadDiuoH2j1qRWve6bQ27WdxA+0dNR9D1/AmfL4hcdGt2e4MdASWVXCohjO6ul86awBdxkJxiUISXmT0880q8XD/w75uFlkquG2jfCLrvh2del92IX1RUcnu5mY4oZCM144u/hkIRLBJ4XI5+IB2pmS4kSYQfD/QXTnUPSQO98XL9xONSjzqN5DSaXuEcJNRstaTSXEql4eb5d1f6RotWSyrNzDkN/VBzq5ojCU1bLQmE6E19ehXCXLEq20KL+YGDDBW1jkMqL1RKt1s8D+0bsq0WOtWGvRrC3FG/8hz7tKL6sCsR0q2WFKoMe5WEuf3ItBIQvpp9mX7gfw+bnS/Xz152bVgx0JXqNoqXvPCJg2HliniTnhFys80b8fD/b99IAM9H3cqeAA3dghyqWSBVJPKD7ZqPtR/wMfi1IVa/YaNDtZZHuOf4ekRQ8n5TFg5UzV1D2Id7QDDSn7TzylIVaVQppR2Ihn6VRe+QilnBdZxS4L/ZN9I5PVBbgURQUZAsoGgRSYn0T1dyXgHUT/zhvzsy0hsv1w8LubzlkBcoNk9jeVFLiq5QDRBaDgl9Z/z3JCNd7qOF1pXV4tHK5ouhilxBOtaviJy3ruNzUI30RgPfv9nLx02wdYvwLD+qzS7fMbOIEnILcfhcyUa6UvHip8I5FLBZ/SRMpMgA2tL4bvgIVlHC47XSiM+XbaTK2zUqWn65bOVNpXMDNb0nJiyihOIwDp+3xEhXahVBaOgq5LL64udelBecxTd8bg4jBcKiqLFdI+0sslnbm2rIRfGYLAIMiNJWSWHsN/AxZdQnguCIQCRYzZvqSNpte1GKKCGX+Lf4jXRp1yh6BhDZyc/JHFbac8oZmuXQuhelihJyiX+vhpHeqEgEYVWRVOX+ia9YBhruMaSKEnKJf7eqkSoTQdSKTmqSXYUkXU2zqi4qbaukEP92bSO9UYkIwlp+yj6npW+AtReLlYgSconH0MxIV16mN9ZJlwiT+SlXJKKheVwlfq8EmKwSkwWPo7mRKhBBWMtP2eos8v2oSpUwZnCJEnKJxyNhpCslRRAt8n9OFi9qGtouGhvpW4TCkHDlG4jHJWmkQJg3Es9ubnPVq6Jzs7iAJF4w4goHKqGGKCGXsbHhY2TYXgSh59ppLLo/rYsfD1S6I6OmKCGXeIyaJqpEu0bb8zlmpkBEg05XY8EoiBKEU4AY8Tg1GemNDUUQpsLe3Pd0ib+yInfgldBKlJBLPF6VRrp61UYRktZ7EGPW4iVZqQxsHB4doaUoIZd4zOonaCMRhJmwN3W+qwh1S5JpJkiIEnKJx67eSFdWFkFo6FCQmBo5ioe6CnqjGtoqKcTjN2OkDUQQ0l0KKpNCXnHvker6GSEtSsglvg5LRroSeoa1vKr4nKaQOu/nAknkBA2ZtKIwQWNbJYX4eiwaKbCWCEKDvPWcxAhSXP+YGpszQJMoIZexa8LH2OL0zr1Yy0tcz4nHHIX4hTQqzwOWooLs9TIRX5t9I+UXQWgoiJ6RFEVIe5QWZXmAVlFCLvH19WCkNzKKILQXBE+3ZUqvNGA0eEzcmK9Rryghl/g6uzLSlQxRlvqWzFm6J1+qJibOmbAgSsglvtYujRTIIILQXiA8rHCL52eM+ccWlkQJucTX3K2RLizZsyodMZ7xMC/tMR/VnoNwEV9370YKLBFBqE559sJ66f4odz4aJqlBUUIWIw9V+4YATuaIIMRbjUfce8u9+KD3BpYI66KEJBKqnr1VsfeYI4KQjhyPiMcaIB4WRrxBKnoQJVCY2j8cyatSFq4VmhfzaOonXVjJzS0APglpGMmrUhYx3VFX5G0N0h7IJ94xqRPvDKMtaFGPhKCyfhGLLB8Oakw8njOM0Fa5scB77mGUxS0wNuEjEE/5tsQ1GvFyPfEmruhZlLAll/fcw2Be9ZOSUmnZqvjwpkwppRFMQsqNW7HcQPeezBjJq1JFEBq8qoIBpb2PVWaM7Vnbe+5hJK9KFUFIe9W7MbZ8OKmTcJS2SmBD77mHkbwq1VFIOYi7vm+zEDJBHK27PM7L1IWrNka79xQRhIhX3dZqHv6zAk/3yW0QVnP3nuLwKOYRLb3qnc3g/+RkSnFoqLxImffcw2helfJMmnnVtQ1T9wVNtJgfABXmYXIh4qqtCYN5VVJaVt2rrkZao0dKXZEAI4kSqPmPVozkVQMJ/fuaXhXmS/gRdiMlrkKAUUQJM+lRhXaM5FWp7Zpac3k+OaPLphaHaq4+2mjde+5hNK9KEUHUiArDiTmMNKU4xPF7dtiP99zDaF6VsuByetUQlZYbDW0iDvUwO/WeexjNq1LmPJdXDc4v10ipxSF/gONgtIU4uucTodSrzkaa05ckFodGkpiN5j33MNyiTGinlXjVxZOm/TGlODSSKGHmuN5zD8N5VUJUmeNVk4yUWhzKGYhVuvc8RlisM9MpkyREmKleNcFIzz1F6o/b5/k9ccwYqeUWSPh6OdmZgYc+MiyyG79Mb6Qf7IDuPfMxkleliCBIjg1UT0cHwUuH8YkxRioOzTyv6Dn2If4pk4YEQz3zqHOh7SB3PzPS+SD+ONs+PdRNxWghL0WhFIprZw6OZKTbg09AjrM7oIe9NAzYkjl1agD6PXn5SjdSIGEA3n5xrBiuDUNwZKkRRUJ1F5EwmJFyVfeq9xjQe54KGgA5kWYw0uybSfSq2ec3Sfeqw3lPQvejJLos0u7eSPCqoz24Eb2qL8hxkIpDB+QxUmpPaDT1CfEh9gBfhOPgWLTYjHQlpeycmjhbZsoDtYjRvCdlfgM453jIdbk/MUHxqoCRVErBqxIKC5YwlPckzmlATnHoiOGk8OP4PzhIWXVGEkFQiwzaMZr3pOhwASXFoSOGk9cyUiB1BfLXedrASN6T0r1YUVoc2iPc6/AD8wrweAAnSV610kqkkda86kjekypKWFH1vmy/UfrwnxVI9ar+iQldGMx7kp8HZ3Fol1sjbfkQqF616gqliFq96nCRTcLuJu7i0C7vPtjUuHhD9aq+istgJElnSj+7+cK1NVKpPX4Urwrg7OVqprRXbT4JBQmLf0oPu1Zx6Ih3jkzSCKhetUkOoIUCXnUk70l1DiukUq+76jI8IHxAe9LCjmb5gDBbedXRvCfFIayQdgyPg4kc1JowMSkhyEgiiJpedSTvmdJWAYBNiN6by/UTj6lJG4ZOolcdRATB7VVH8p4pooQt5KPL6R2PCSq8Ym49RrJXHWvCFXvVUbxn6cImWacJjHl+qQrvOWledZR2TZh8sQd4Al/M0iB9r6K5M6w6+EA9pDWaRxJBpIRxQ3lP4lw5g/T9ii4yNYX25YzE5wcI16IsfK/GA686lPckRlwUhMLkw/nb8SasjwEfrInRleUE4nlFK0YqgXC/pL1BC6a2VSjg3mOdzgOnpNr7HHiMIyy9ru7bNfi6dUdGPEwVJVAhnjIdFbzEB3fAwxCAgN5FEPh6uzbSy/WT23tuIe2sDq9Nvjd0xrKiQM8iCHyt3RppZkRFhXQ+CsRjusNcaHj8Iy0s9aYreqx24mvszkgv1w9qNbsE4vnodg/pHqRd/TnLvOmK3iqf+Pp6MdJSUUIqxPUClGvVnJcCwZtyFgt6EUHErgsfY44MooRUSEdYpGjBxMNlzkt6EEHgazLxHHdIlYRyQ3qjSVI6J72anBHGx+lNV1gWQUSvJXKcfvKJElIhvVBTPtp9g3hcTmDSBSXCoggCX4M1I60hSkiFdNqTFD2IV7iIrPlQrbVr8PgtGWktUUIKpENdIB7TIbS3Ym6MyOG4YUUEgcdtwkgTNgnUhnSoeygF3IOZ9gRzESmGucGt+37gMas30gbPLQXSoW5Wa9FKyAtstRprFkHgsao1UoG2yhk0hLrZ4b7WCfnABmHvitCuUVhYw+PUZqStRQkpkH6eRUVQ6cEnsXH4pE0EERsfPkaOuj/9KO2Mkqq6GLoe9Dlbhb0rNIkg8Ng0PDspUUIKpNO6JAHDHjR5i1M2DHu3kH4/KxCPSdpIIQrLzrMaQrrNBos8HlMydL/76JEsF50JSREEHouUkWoQJVChomDEkQaY6ZluKDlJpEQQeBwSRqpBlJAC8ZoLZVsaFeIXk8ha2t4UtBZB4N9vaqSKRAlULFX6Zs8nRtZ8vekD5yLnKpWJlntW8W+3eGZhkjeuqnNBMjUBshSMMCRCuGIq6cu1EEHg36xupApFCSkQL4jWmJvSpepcagnDardr8O/VMlLNogQqpOdy1XRMfPXJYNUbkoFaIojY7+Bjyim315MTNe5/EmumCNIrUDYV5KdbhFyVOSfCv8FppBZECVRomMPV0wTxVSiTkv3TPXCKIPC5uYzUWlvlDNLzt0inS4WGlSiXWr0BeNXSwhI+Z6mRWhIlUKFh7lb3oiukV6NcgiFoKSRhlIog8PmKjPQyvfXkPVdIz9smXnSFhhUpm5frp+YJmCuCwOfJMlKDogQquGsAqRQpYEqvSkVUVkjCyBFB4HOkGGkPbZUjaFAXVa3o7iFlEmhk09AjE0EEQVwM8d+Sn49xUQIFNfvTFIp40RUlOZQOZrxXpjGoIgj8d2dGOnsW/ddfCg07XUTvs44bUEYrFcwzEUTseHzMT/YhSqBA3JEI7XG+A2WV10wLYe8WewUQfFzMSMHItbahakBDgVOFE1CRlOdSeaV3DzERBD4GG2lvooQz6JiXGe/SrQUNK1YqRZN5JmzbNfj/ViPtUZRAQWp1nJsq55d47J9AzaKGVKwv7sb/PntbgbK/Aqj4Yr3GlhZMFvnwgsaR8rLRoCLM1dyHt/HSMsFyuKM6VIS52vvOmsNea5VcRxpUOAmNYS6G2rBXcwjiKIaKnr2lOaau2mu01eKgYVZl7Qs9WtBEmIshnRusNHnzHEnQMNdMFiO1rG69tFoccewpsFrSdK1DPk/wSm7PUJFW9ZBKid1IC1U2RzbAAUgXKLtKpVp/psJ0+OE4hQYDBZrMQ/cQ3jTA9Fa8U1oqgzuS0XQuHbFHyWUTuVYP+YFjF1oMtOtIrWaY0lV+4HiAFgMdwhHUKCR5q6VvaDFQaCl2b6Ar+A3VWy29Qo2BjugI2F674q2WbuEGqgClrZmuE/jBsbzRX9xAgV21WnJQYqgjvhZkBNQsMKbTU6mAEkP1m9gX4Hm6gSpFiaHC3w5TdesYGsTyP+kGGkWJoYb+lfdJTSIUiBRsN/tJN9BDlBjqHCb5DbaEkH8Kb2m8p88fEkoMdeY4n1GwDE3hLSzww1dxU1H6AP2m60XpB5O5OXQftBQ8yqTp3XNVPcj9SHItQqjtBlqI8DWxwoca/r7HrUWGsHy/Ro33DBxBLN8KXMWF0b4qpgFhiyKXBJSR3rargEXHybMSX64frlaqD22h7Y0eVdUF66rsxloFQTXEEPlw04uJDcEuHXNjZYFW4wx0sUt7LIUI3l0S4XzezE7BrBZSbJyef8qDNfxdGMIi+DK2r7y7CN/8eb5+Y41omOnhrSLAg6g2WRbv6ivxjNC75irg1eTl+uGLrDK0EWnD+ccz2GUR/F5tIWRkGKO/rUM3qnrVLcGbPE2vPapVQm/TkGHe6N7TDuZJVirSp3MWScDvvXy1OknmQtz0ZiKURXTvaRhBUihQdZy9z/QOkx7GoC08Xj2lVaO8p+946gIwGaXDtlk/fP0I1ejFeGv3ZmHywm/MxZ7ZIKXvAxsv18/a98/RGK1D4GRCFRm8WiAY1D3B862GPW86WD3h9pjp+3IO3v6xIs6LjPeyu4a2vYxOGudIZHrz0HYghDDQjdUEXTE0ONxY9TIYp9FquaMC5gJLbTGE84y3sNaN07GHoEm11sTvgKFV9jS9eljrICPIDGHTskCfdSiGtpCL4B2FWN6zpLd9Y4xBoeW7jBw1sO6d7LkPWZNzGuFe09EIod/6NL26wZ5xzJ1DDmW4GaxXh2+bDdxjOlQjbPMKGt1BvGzH2/YcA6CvHSdLqwQihqfp1QXujm4R9m5ud6ZobfOESGCz5c6rsY7Rsd3dsoTLYVdMLWFFWByCd58NcTVGD1sdjgKAAW23rK2cK82brWvPL1/xMe4NbeL/5FCRXPJSKwAAAAAASUVORK5CYII=" alt="한국세무사회 마크" width="40" height="40"><span class="name-tag">세무사 이무종</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="padding-top:20px">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Specialty</div>
+      <h2>상속 · 증여 · 양도<br>재산 세금 전문</h2>
+      <p class="sub">금액이 큰 만큼, 신고 전에 설계가 먼저입니다. 한 번의 선택이 수천만 원의 차이를 만들 수 있습니다.</p>
+    </div>
+
+    <div class="spec-list">
+      <article class="spec dark rv">
+        <div class="spec-head"><span class="no">01</span><h3>상속세</h3></div>
+        <p class="lead">피상속인의 재산 전체를 정확히 파악하고, 공제를 빠짐없이 적용해 세 부담을 줄입니다.</p>
+        <ul>
+          <li>상속재산 조사 및 평가 (부동산·금융자산·주식 등)</li>
+          <li>일괄공제·배우자공제 등 상속공제 적용 검토</li>
+          <li>상속 전 증여재산 합산 여부 확인</li>
+          <li>연부연납·물납 등 납부 방법 설계</li>
+          <li>상속세 신고 대행 및 사후 소명 대응</li>
+        </ul>
+        <div class="due"><b>신고 기한</b> 상속개시일이 속하는 달의 말일부터 6개월 (해외 거주 시 9개월)</div>
+      </article>
+
+      <article class="spec rv">
+        <div class="spec-head"><span class="no">02</span><h3>증여세</h3></div>
+        <p class="lead">미리, 나누어, 계획적으로. 가족 간 증여를 가장 유리한 방식으로 설계합니다.</p>
+        <ul>
+          <li>배우자·자녀·손자녀 증여 시뮬레이션</li>
+          <li>10년 합산과세 및 증여재산공제 활용 설계</li>
+          <li>부동산·주식·현금 증여재산 평가</li>
+          <li>부담부증여(채무 포함 증여) 검토</li>
+          <li>자금출처 조사 대비 및 소명 자료 준비</li>
+        </ul>
+        <div class="due"><b>신고 기한</b> 증여받은 달의 말일부터 3개월</div>
+      </article>
+
+      <article class="spec tint rv">
+        <div class="spec-head"><span class="no">03</span><h3>양도소득세</h3></div>
+        <p class="lead">팔기 전에 상담하세요. 양도 시기와 방법에 따라 세금이 크게 달라집니다.</p>
+        <ul>
+          <li>1세대 1주택 비과세 요건 검토</li>
+          <li>다주택자 중과 여부 및 장기보유특별공제 확인</li>
+          <li>취득가액·필요경비 인정 범위 검토</li>
+          <li>증여 후 양도 시 이월과세 판단</li>
+          <li>아파트·토지·상가·분양권·주식 양도 신고</li>
+        </ul>
+        <div class="due"><b>신고 기한</b> 양도일이 속하는 달의 말일부터 2개월 (예정신고)</div>
+      </article>
+    </div>
+
+    <div class="worry rv">
+      <h3>이런 고민, 있으신가요?</h3>
+      <div class="chips">
+        <span>부모님 재산, 어떻게 나눠야 할지 막막해요</span>
+        <span>집을 팔려는데 세금이 얼마나 나올까요?</span>
+        <span>자녀에게 미리 증여하는 게 유리할까요?</span>
+        <span>상속세 낼 현금이 부족해요</span>
+        <span>공동명의·지분 이전을 고민 중이에요</span>
+        <span>세무서에서 소명 요청을 받았어요</span>
+      </div>
+    </div>
+
+    <div class="general rv">
+      <div class="eyebrow">Tax Service</div>
+      <h3>기장 · 신고 · 절세 컨설팅</h3>
+      <p class="sub" style="font-size:16px;margin-bottom:24px">개인사업자부터 법인까지, 매달의 장부 관리에서 신고와 절세 설계까지 세무 전반을 맡아 드립니다.</p>
+      <div class="gen-grid">
+        <div class="gen"><h4>기장 상담 · 대행</h4><p>개인사업자·법인의 월 장부 작성과 세무 상담, 증빙 관리 방법 안내</p><small>월 단위 관리</small></div>
+        <div class="gen"><h4>법인세</h4><p>결산, 세무조정, 법인세 신고와 법인 절세 설계, 대표자 급여·배당 상담</p><small>사업연도 종료 후 3개월 이내</small></div>
+        <div class="gen"><h4>소득세</h4><p>종합소득세 신고(사업·근로·임대·금융·연금소득), 성실신고 확인 상담</p><small>매년 5월 신고</small></div>
+        <div class="gen"><h4>부가가치세</h4><p>일반·간이과세자 신고, 매입세액 공제 검토, 세금계산서 상담</p><small>매년 1월·7월 확정신고</small></div>
+        <div class="gen"><h4>절세 컨설팅</h4><p>개인·법인의 세금 구조를 진단하고, 창업·법인 전환·가족 간 재산 이전까지 종합적으로 설계</p><small>전반적인 절세 설계</small></div>
+        <div class="gen"><h4>세무조사 · 불복</h4><p>세무조사 대응, 소명 자료 준비, 경정청구, 이의신청·심판청구</p><small>사후 구제 지원</small></div>
+      </div>
+    </div>
+
+    <p class="notice rv">※ 신고 기한과 공제 내용은 법령 개정 및 개별 사정에 따라 달라질 수 있습니다. 정확한 내용은 상담을 통해 확인해 주세요.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Process</div>
+      <h2>상담 진행 절차</h2>
+      <p class="sub">처음이어도 어렵지 않습니다.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>문의 접수</h3><p>전화·이메일로 간단히 상황을 알려주세요.</p></div>
+      <div class="step rv"><div class="n">02</div><h3>1차 상담</h3><p>가족관계와 재산 현황을 파악하고 필요한 자료를 안내합니다.</p></div>
+      <div class="step rv"><div class="n">03</div><h3>검토·제안</h3><p>시나리오별 세금을 비교해 가장 유리한 방안을 제시합니다.</p></div>
+      <div class="step rv"><div class="n">04</div><h3>신고·사후관리</h3><p>신고 대행과 이후 관리까지 지원합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">FAQ</div>
+      <h2>자주 묻는 질문</h2>
+      <p class="sub">궁금한 점을 먼저 확인해 보세요.</p>
+    </div>
+    <div class="faq rv">
+      <details><summary>상속세 신고는 언제까지 해야 하나요?</summary><p>상속개시일(사망일)이 속하는 달의 말일부터 6개월 이내이며, 피상속인이나 상속인이 외국에 주소를 둔 경우 9개월입니다. 기한 내 신고하면 세액공제 등 혜택이 있으니, 가능한 한 빨리 상담받으시길 권해 드립니다.</p></details>
+      <details><summary>증여는 미리 할수록 유리한가요?</summary><p>증여재산공제는 일정 기간(10년) 단위로 합산해 적용되고, 상속 시 사전에 증여한 재산이 상속재산에 합산될 수 있습니다. 재산 규모와 가족 구성에 따라 유불리가 달라지므로, 증여 전에 시뮬레이션을 해보시길 권합니다.</p></details>
+      <details><summary>집을 팔기 전에 상담받는 게 좋은가요?</summary><p>네, 양도 전 상담이 가장 중요합니다. 양도 시기와 방법(매매·증여 등)에 따라 비과세·감면 여부와 세액이 크게 달라질 수 있습니다.</p></details>
+      <details><summary>상담 시 어떤 자료를 준비해야 하나요?</summary><p>신분증, 사업자등록증, 최근 신고 내역, 관련 계약서 등 상황에 따라 다릅니다. 문의 시 안내해 드립니다.</p></details>
+      <details><summary>비대면 상담도 가능한가요?</summary><p>네, 가능합니다. 전화·이메일 등 비대면으로도 상담받으실 수 있습니다.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="location" style="padding-top:20px">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Location</div>
+      <h2>찾아오시는 길</h2>
+      <p class="sub">경기도 안양시 동안구 시민대로 281, 201호</p>
+    </div>
+    <div class="map rv">
+      <iframe title="이원세무회계사무소 위치 지도" src="https://maps.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C%20%EB%8F%99%EC%95%88%EA%B5%AC%20%EC%8B%9C%EB%AF%BC%EB%8C%80%EB%A1%9C%20281&hl=ko&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <div class="map-links">
+      <a href="https://map.naver.com/p/search/경기도 안양시 동안구 시민대로 281" target="_blank" rel="noopener">네이버지도</a>
+      <a href="https://map.kakao.com/?q=경기도 안양시 동안구 시민대로 281" target="_blank" rel="noopener">카카오맵</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=경기도 안양시 동안구 시민대로 281" target="_blank" rel="noopener">구글지도</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <div class="contact rv">
+      <div class="eyebrow">Contact</div>
+      <h2>편하게 연락 주세요.</h2>
+      <a class="tel" href="tel:0313883505">031-388-3505</a>
+      <div class="infos">
+        <div class="info"><small>이메일</small><b><a href="mailto:eonetax21@naver.com">eonetax21@naver.com</a></b></div>
+        <div class="info"><small>사무실</small><b>경기도 안양시 동안구 시민대로 281, 201호</b></div>
+        <div class="info"><small>상담시간</small><b>평일 09:00 ~ 18:00</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 이원세무회계사무소. 본 사이트의 내용은 일반적인 정보이며 개별 사안에 대한 세무 자문이 아닙니다.</footer>
+
+<div class="install" id="install" role="dialog" aria-live="polite" aria-label="앱 설치 안내">
+  <div class="row">
+    <img src="icons/icon-192.png" alt="" width="56" height="56">
+    <div><h4>앱을 설치하시겠습니까?</h4><p>홈 화면에 추가하고 바로 상담 문의하세요.</p></div>
+  </div>
+  <div class="ios-guide">하단의 <b>공유 버튼(□↑)</b>을 누른 뒤 <b>‘홈 화면에 추가’</b>를 선택해 주세요.</div>
+  <div class="btns">
+    <button type="button" class="no" id="installNo">나중에</button>
+    <button type="button" class="yes" id="installYes">설치</button>
+  </div>
+</div>
+
+<script>
+  // ---- PWA: 서비스워커 등록 + 설치 안내(모바일 전용) ----
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  }
+  (function(){
+    const sheet=document.getElementById('install'),yes=document.getElementById('installYes'),no=document.getElementById('installNo');
+    const ua=navigator.userAgent;
+    const isMobile=/Android|iPhone|iPad|iPod/i.test(ua)||(matchMedia('(pointer:coarse)').matches&&innerWidth<=820);
+    const isIOS=/iPhone|iPad|iPod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+    const KEY='pwaInstallDismissed',WEEK=7*24*3600*1000;
+    function dismissed(){try{const t=+localStorage.getItem(KEY);return t&&Date.now()-t<WEEK}catch(e){return false}}
+    function remember(){try{localStorage.setItem(KEY,Date.now())}catch(e){}}
+    if(!isMobile||standalone||dismissed())return;
+
+    let deferred=null;
+    function show(){sheet.classList.add('show')}
+    function hide(){sheet.classList.remove('show')}
+
+    window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;setTimeout(show,2500)});
+    window.addEventListener('appinstalled',()=>{hide();remember()});
+
+    if(isIOS){ // iOS 사파리는 설치 이벤트가 없어 안내 문구로 대체
+      sheet.classList.add('ios');yes.textContent='확인';
+      setTimeout(show,2500);
+    }
+    yes.addEventListener('click',async()=>{
+      if(deferred){deferred.prompt();await deferred.userChoice.catch(()=>{});deferred=null}
+      hide();remember();
+    });
+    no.addEventListener('click',()=>{hide();remember()});
+  })();
+
+  const btn=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+  function setMenu(open){nav.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기')}
+  btn.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+
+  const items=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+    items.forEach(el=>io.observe(el));
+  }else{items.forEach(el=>el.classList.add('in'))}
+</script>
+</body>
+</html>
